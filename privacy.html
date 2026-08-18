@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>プライバシーポリシー — 睡眠ボタン</title>
+<style>
+:root { color-scheme: dark light; }
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 2rem 1.25rem 6rem;
+  background: #06080C;
+  color: #E6EDF5;
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+  font-size: 16px;
+}
+main { max-width: 44rem; margin: 0 auto; }
+h1 { font-size: 1.75rem; line-height: 1.5; margin: 0 0 1.5rem; }
+h2 { font-size: 1.25rem; line-height: 1.6; margin: 2.75rem 0 0.75rem; }
+h3 { font-size: 1.05rem; margin: 2rem 0 0.5rem; }
+p { margin: 0.85rem 0; }
+strong { color: #FFFFFF; }
+a { color: #8FB8DC; }
+hr { border: 0; border-top: 1px solid #1C2430; margin: 2.5rem 0; }
+code {
+  background: #11151C;
+  border: 1px solid #1C2430;
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+  font-size: 0.9em;
+  word-break: break-all;
+}
+ul, ol { padding-left: 1.4rem; margin: 0.85rem 0; }
+li { margin: 0.4rem 0; }
+blockquote {
+  margin: 1.25rem 0;
+  padding: 0.25rem 0 0.25rem 1rem;
+  border-left: 2px solid #33445A;
+  color: #A8B6C6;
+}
+.table-wrap { overflow-x: auto; margin: 1.25rem 0; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+th, td {
+  border: 1px solid #1C2430;
+  padding: 0.5rem 0.7rem;
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #11151C; white-space: nowrap; }
+.home { display: inline-block; margin-bottom: 2rem; font-size: 0.9rem; }
+footer { margin-top: 4rem; color: #6D7B8C; font-size: 0.85rem; }
+@media (prefers-color-scheme: light) {
+  body { background: #FFFFFF; color: #16202C; }
+  strong { color: #000000; }
+  a { color: #245C8C; }
+  hr { border-top-color: #DCE3EA; }
+  code { background: #F2F5F8; border-color: #DCE3EA; }
+  th, td { border-color: #DCE3EA; }
+  th { background: #F2F5F8; }
+  blockquote { border-left-color: #C3CEDA; color: #4A5766; }
+  footer { color: #6D7B8C; }
+}
+</style>
+</head>
+<body>
+<main>
+<a class="home" href="./">← 睡眠ボタン の文書一覧</a>
+<h1>プライバシーポリシー</h1>
+<ul>
+<li><strong>アプリ名</strong>: 睡眠ボタン</li>
+<li><strong>版数</strong>: 1.0</li>
+<li><strong>最終更新日</strong>: 2026-08-18</li>
+<li><strong>提供者</strong>: {{PROVIDER_NAME}}</li>
+<li><strong>問い合わせ窓口</strong>: {{CONTACT_EMAIL}}</li>
+</ul>
+<hr />
+<h2>0. はじめに</h2>
+<p>睡眠ボタン（以下「本アプリ」）は、就寝と起床をボタンで記録し、生活習慣6項目と 翌朝の目覚めの関係を本人だけが確認するためのアプリです。</p>
+<p>本アプリが扱うのは、<strong>睡眠・飲酒・気分</strong>という機微な情報です。 このポリシーは、雛形ではなく<strong>本アプリが実際に行っている処理を書いたもの</strong>です。 各項目には、対応する保存先（データベースのテーブル名）を添えてあります。</p>
+<hr />
+<h2>1. 収集する情報と、その保存先</h2>
+<p><strong>本アプリは個人情報を収集します。</strong> サインインを必須にしているため、 認証プロバイダから氏名とメールアドレスを受け取り、サーバーに保存します。 「一切の個人情報を収集しません」という説明は、本アプリには当てはまりません。</p>
+<p>保存先の「Convex」は本アプリのバックエンド（データベース）、 「PostHog」は利用状況の分析サービスです。所在地は §4 に書いています。</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>#</th><th>情報</th><th>具体的に保存しているもの</th><th>保存先</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><strong>氏名（表示名）</strong></td><td>Google または Apple のサインインから受け取る表示名</td><td>Convex <code>users.name</code></td></tr>
+<tr><td>2</td><td><strong>メールアドレス</strong></td><td>同上。および確認済みかどうかの時刻</td><td>Convex <code>users.email</code> / <code>users.emailVerificationTime</code></td></tr>
+<tr><td>3</td><td><strong>プロフィール画像の URL</strong></td><td>同上。画像そのものではなく、提供元の URL 文字列</td><td>Convex <code>users.image</code></td></tr>
+<tr><td>4</td><td><strong>サインインの情報</strong></td><td>利用したプロバイダ名（Google / Apple）、プロバイダ側のアカウント識別子、セッション、更新トークン、認証の一時コード</td><td>Convex <code>authAccounts</code> / <code>authSessions</code> / <code>authRefreshTokens</code> / <code>authVerificationCodes</code> / <code>authVerifiers</code> / <code>authRateLimits</code></td></tr>
+<tr><td>5</td><td><strong>睡眠の記録</strong></td><td>就寝時刻・起床時刻・睡眠時間・昼寝の長さ・<strong>目覚めの良さ</strong>（よい／ふつう／わるい）・記録の種別（睡眠／昼寝）・記録の状態・<strong>記録手段</strong>（ボタン／ウィジェット／通知）・あとから入力したものか・編集した回数・記録時のタイムゾーンのずれ・帰属する日付・作成と更新の時刻・端末が採番した重複防止のキー</td><td>Convex <code>sleepRecords</code></td></tr>
+<tr><td>6</td><td><strong>就寝時の6項目の回答</strong></td><td>スマホ・気分・アルコール・入浴・カフェイン・運動の回答値</td><td>Convex <code>sleepFactors</code></td></tr>
+<tr><td>7</td><td><strong>実験の記録</strong></td><td>対象の項目・目標の内容と値・期間・守れた日数・守れなかった日数・状態・開始と終了の時刻</td><td>Convex <code>experiments</code></td></tr>
+<tr><td>8</td><td><strong>プロフィール</strong></td><td>年齢帯・目標睡眠時間とその出所・記録から自動算出した必要睡眠時間とその再計算の起点・自動算出値を採用するかどうか・タイムゾーン</td><td>Convex <code>users</code>（<code>ageBand</code> / <code>targetSleepMinutes</code> / <code>needSource</code> / <code>personalNeedMinutes</code> / <code>personalNeedBaselineGood</code> / <code>usePersonalNeed</code> / <code>timezone</code>）</td></tr>
+<tr><td>9</td><td><strong>通知と画面の設定</strong></td><td>就寝リマインドと起床リマインドの時刻、5つの通知それぞれのオン／オフ、夜間に画面を暗くするかどうか</td><td>Convex <code>users</code>（<code>notifyBedtime</code> / <code>notifyWake</code> / <code>notifyBedtimeEnabled</code> / <code>notifyWakeEnabled</code> / <code>notifyForgotEnabled</code> / <code>notifyUnlockEnabled</code> / <code>notifyTrialEnabled</code> / <code>nightDim</code>）</td></tr>
+<tr><td>10</td><td><strong>計測のオプトアウトの設定</strong></td><td>利用状況の計測に協力するかどうか</td><td>Convex <code>users.analyticsOptOut</code></td></tr>
+<tr><td>11</td><td><strong>分析の解禁をお知らせしたかどうか</strong></td><td>どの分析について通知したか、その案内を見たか</td><td>Convex <code>users.unlockNotices</code></td></tr>
+<tr><td>12</td><td><strong>利用の節目の時刻</strong></td><td>オンボーディングを終えた時刻・アカウントを作成した時刻・無料体験の案内を自動で表示した時刻・体験開始の計測を送る前かどうかの印</td><td>Convex <code>users</code>（<code>onboardingCompletedAt</code> / <code>createdAt</code> / <code>paywallAutoShownAt</code> / <code>trialStartedPending</code> / <code>trialStartedAt</code>）</td></tr>
+<tr><td>13</td><td><strong>課金の状態</strong></td><td>プラン（月額／年額）・購読の状態・期限・無料体験の開始と終了・<strong>RevenueCat のユーザー ID</strong>・ストアの商品識別子・直近にストアから届いたイベントの種別と時刻</td><td>Convex <code>subscriptions</code>（控えとして <code>users.subscriptionStatus</code> / <code>users.subscriptionExpiresAt</code> / <code>users.revenueCatUserId</code>）</td></tr>
+<tr><td>14</td><td><strong>削除の予約</strong></td><td>アカウント削除を確定した時刻</td><td>Convex <code>users.deletionRequestedAt</code></td></tr>
+<tr><td>15</td><td><strong>削除の実行記録</strong></td><td>削除した件数・日時・結果・PostHog に渡した識別子（§7.4）</td><td>Convex <code>deletionJobs</code></td></tr>
+<tr><td>16</td><td><strong>利用状況（分析用）</strong></td><td>§3.1 のカテゴリに限る。<strong>記録の中身は含みません</strong></td><td>PostHog</td></tr>
+</tbody>
+</table>
+</div>
+<p>上記 1〜15 の各行は、あなたのユーザー ID に紐づけて保存されます。</p>
+<p><strong>保存していないもの（同じデータベースの中で）</strong>:</p>
+<ul>
+<li><strong>電話番号</strong>。本アプリは電話番号によるサインインを提供していないため、 認証基盤が持つ <code>users.phone</code> / <code>users.phoneVerificationTime</code> の列には値が入りません</li>
+<li><strong>匿名アカウント</strong>。匿名サインインを提供していないため、<code>users.isAnonymous</code> にも値が入りません</li>
+<li><strong>自由入力の文章</strong>。本アプリには自由記述の入力欄がありません。 実験のタイトル（<code>experiments.title</code>）はアプリがあらかじめ用意した固定の文言です</li>
+<li><strong>位置情報・連絡先・端末の写真や動画・検索履歴・閲覧履歴・広告識別子・お支払いの情報</strong>（§8）</li>
+</ul>
+<hr />
+<h2>2. 機微な個人情報の扱い</h2>
+<p><strong>睡眠・飲酒・気分は機微な個人情報です。</strong></p>
+<ul>
+<li>これらを含む記録について、<strong>第三者への提供は行いません</strong></li>
+<li>これらを<strong>広告の目的で利用することはありません</strong>。本アプリに広告はありません</li>
+<li>分析はすべて<strong>あなた自身のデータの中だけ</strong>で完結します。ほかの利用者との比較は行いません</li>
+</ul>
+<p>法令に基づく開示請求など、法律上応じる義務がある場合を除き、 本人の同意なく第三者に提供することはありません。</p>
+<hr />
+<h2>3. 利用状況の分析（PostHog）</h2>
+<p>本アプリは、どこで使いにくいかを把握して改善するために、 プロダクト分析サービス <strong>PostHog</strong> を利用しています。</p>
+<p><strong>送っているのは「アプリの使われ方」であって、「記録の内容」ではありません。</strong></p>
+<h3>3.1 PostHog に送っているもの（カテゴリ）</h3>
+<p>送信できるイベント名とプロパティ名は、アプリのソースコード上の <strong>許可リスト（<code>EVENT_ALLOWLIST</code>）に列挙されたものだけ</strong>です。 許可リストに無いものは、送信の直前に破棄されます。 そのため、送っているものは次のカテゴリに限られます。</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>#</th><th>カテゴリ</th><th>具体例</th></tr></thead>
+<tbody>
+<tr><td>A</td><td><strong>操作が起きたという事実</strong>（イベント名そのもの）</td><td>「就寝を記録した」「起床を記録した」「記録を削除した」「サインアウトした」「無料体験が始まった」「購入の画面を開いた」「購入が成立した」「購入を復元した」「同期の競合を解決した」</td></tr>
+<tr><td>B</td><td><strong>件数</strong></td><td>記録の累計件数、購入時点の記録件数、直近30日の記録件数、回答した項目の数、オフライン中に溜まった件数</td></tr>
+<tr><td>C</td><td><strong>日数・秒数・分数</strong></td><td>サインアップからの経過日数、あとから入力した日の何日前か、実験の何日目か、購読の継続月数、記録にかかった秒数、同期の遅れの分数</td></tr>
+<tr><td>D</td><td><strong>画面名・タブ名・きっかけ</strong></td><td>分析画面のどのタブを見たか、エラーが起きた画面、購入画面をどの導線から開いたか</td></tr>
+<tr><td>E</td><td><strong>記録手段の内訳</strong></td><td>ボタン／ウィジェット／あとから入力／通知のいずれか</td></tr>
+<tr><td>F</td><td><strong>課金の状態遷移とプランの区分</strong></td><td>月額（<code>monthly</code>）／年額（<code>annual</code>）の2語のみ</td></tr>
+<tr><td>G</td><td><strong>購入の失敗理由のコード名</strong></td><td>取り消し／支払い失敗／ストアに接続できない／通信エラー／許可されていない／不明</td></tr>
+<tr><td>H</td><td><strong>エラーコード</strong></td><td>アプリが定義したコード名</td></tr>
+<tr><td>I</td><td><strong>順位と分析の種別</strong></td><td>影響分析の何位の項目を開いたかという<strong>順位の数字</strong>、解禁された分析の種別（週次・月次・睡眠負債・比較・ベスト就寝時刻・必要睡眠時間・6項目のいずれか）</td></tr>
+<tr><td>J</td><td><strong>真偽（はい／いいえ）</strong></td><td>初回起動かどうか、通知を許可したか、年齢帯を<strong>設定したかどうか</strong>、目標睡眠時間を<strong>設定したかどうか</strong>、就寝の記録があったか、自動算出値を採用したか</td></tr>
+<tr><td>K</td><td><strong>認証プロバイダの名前</strong></td><td>Google か Apple か</td></tr>
+<tr><td>L</td><td><strong>ユーザー識別子</strong></td><td>PostHog 上であなたのイベントをまとめるための識別子として、<strong>Convex のユーザー ID のみ</strong>を渡します（<code>$identify</code>）。これは PostHog の SDK が自動的に1件のイベントとして送信します</td></tr>
+</tbody>
+</table>
+</div>
+<p>各イベントに実際にどのプロパティが付くかは、開発リポジトリ内の突き合わせ表 （<code>docs/legal/data-inventory.md</code>）に1件ずつ記載しています。</p>
+<h3>3.2 PostHog に送っていないもの</h3>
+<p>次のものは<strong>1つも送っていません</strong>。</p>
+<ul>
+<li><strong>就寝時の6項目の回答内容</strong>（アルコールを飲んだか、入浴したか、などの回答値）</li>
+<li><strong>個々の就寝時刻・起床時刻・睡眠時間</strong></li>
+<li><strong>分析結果の中身</strong>（影響1位の<strong>項目名</strong>、睡眠負債の値、効果量の数値、ベスト就寝時刻）</li>
+<li><strong>実験の対象になっている項目名</strong></li>
+<li><strong>メールアドレス・氏名・プロフィール画像・認証トークン</strong></li>
+<li><strong>年齢帯</strong>（どの年齢帯かは送りません。母数が小さく、特定につながりうるためです。 送っているのは「年齢帯を設定したかどうか」という、はい／いいえだけです）</li>
+<li><strong>RevenueCat のユーザー ID・レシート・トランザクション ID・ストアの商品識別子</strong> （送っているのは「月額」「年額」という2語のプラン区分だけです）</li>
+<li><strong>お支払いの情報</strong>（クレジットカード番号等は、本アプリもバックエンドも一切受け取りません）</li>
+</ul>
+<h3>3.3 自動収集は使っていません</h3>
+<ul>
+<li><strong><code>autocapture</code>（画面上のテキストや操作の自動収集）を無効にしています。</strong> 有効だと、記録画面の内容を意図せず吸い上げる事故が起こりうるためです</li>
+<li><strong>セッションリプレイ（画面の録画）を無効にしています。</strong></li>
+<li>ページビュー・離脱・パフォーマンス計測・ヒートマップ・誤クリック検出・ 例外の自動捕捉・アンケート・Web 実験の自動収集も、すべて無効にしています</li>
+<li>画面の解像度・現在の URL・参照元といったブラウザの既定プロパティも送信しません</li>
+<li><strong>PostHog にメールアドレスを渡していません。</strong> 識別子として渡すのは Convex のユーザー ID だけです（§3.1 の L）</li>
+</ul>
+<h3>3.4 計測は停止できます（オプトアウト）</h3>
+<p>アプリの <strong>「設定」→「データとプライバシー」→「利用状況の計測に協力する」</strong> をオフにすると、それ以降 PostHog へ1件も送信しません。 この設定はサーバーに保存され、ほかの端末でも同じように効きます。</p>
+<hr />
+<h2>4. 保存先と所在地</h2>
+<div class="table-wrap">
+<table>
+<thead><tr><th>保存先</th><th>用途</th><th>所在地</th></tr></thead>
+<tbody>
+<tr><td><strong>Convex</strong></td><td>§1 の 1〜15（記録・プロフィール・課金・認証）</td><td><strong>EU リージョン</strong>（アイルランド／<code>eu-west-1</code>）</td></tr>
+<tr><td><strong>PostHog</strong></td><td>§3 の利用状況</td><td><strong>EU リージョン</strong></td></tr>
+<tr><td><strong>RevenueCat / App Store / Google Play</strong></td><td>購読の管理と決済</td><td>各サービスの定めによります</td></tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>Convex のリージョンは EU に固定されています</li>
+<li>PostHog は EU のデプロイを利用しています。アカウント削除の際に本アプリのサーバーが 呼び出す API のホストも EU（<code>https://eu.posthog.com</code>）です</li>
+<li><strong>決済は App Store / Google Play が行います。</strong> 本アプリと本アプリのバックエンドは、 カード番号などのお支払い情報を受け取りません</li>
+</ul>
+<hr />
+<h2>5. 第三者への提供</h2>
+<ul>
+<li><strong>売却・貸与・広告目的での提供は行いません。</strong></li>
+<li>§4 に挙げたサービス（Convex / PostHog / RevenueCat / App Store / Google Play）は、 本アプリを動かすために必要な範囲で処理を委託している提供元です。 委託先に渡すものの範囲は §1 と §3 のとおりで、<strong>記録の内容を PostHog に渡すことはありません</strong>。</li>
+</ul>
+<hr />
+<h2>6. 保存期間</h2>
+<div class="table-wrap">
+<table>
+<thead><tr><th>対象</th><th>保存期間</th></tr></thead>
+<tbody>
+<tr><td>§1 の 1〜14（記録・プロフィール・課金・認証）</td><td><strong>あなたが削除するまで</strong>保持します。期間の上限は設けていません（過去の記録を見返せることが本アプリの価値であるためです）</td></tr>
+<tr><td>§1 の 15（削除の実行記録）</td><td>§7.4 のとおり、完全削除の後も残ります</td></tr>
+<tr><td>§3 の利用状況（PostHog）</td><td>PostHog 側の保持設定に従って保持されます。アカウント削除の際には、<strong>あなたに紐づく PostHog 上のデータ（person とイベント）の削除を要求します</strong>（§7.3 の7番目）</td></tr>
+<tr><td>未完了の記録</td><td>就寝から36時間が経過しても起床が記録されない場合、記録は「中断」として扱われます。<strong>削除はされず、そのまま残ります</strong></td></tr>
+</tbody>
+</table>
+</div>
+<hr />
+<h2>7. アカウントの削除</h2>
+<h3>7.1 操作の手順</h3>
+<p>アプリの <strong>「設定」→「アカウント」→「アカウントと記録を削除」</strong> を押すと、 <strong>確認画面</strong>が開きます。何が何件消えるかがそこに一覧で表示されます。 確認画面で「削除する」を押した時点で、削除が<strong>予約</strong>され、すべての端末からサインアウトします。</p>
+<h3>7.2 30日の猶予があります</h3>
+<ul>
+<li><strong>確定した時点では、1件も削除されません。</strong></li>
+<li><strong>30日のあいだは、同じアカウントでサインインすると復元できます。</strong> 復元した場合、記録も設定も実験も、予約する前のまま戻ります</li>
+<li><strong>30日を過ぎると、サーバー側の定期処理が完全削除を実行します。</strong> ここから先は戻せません。アプリを二度と開かなかった場合でも実行されます</li>
+</ul>
+<h3>7.3 削除の対象（7つ）</h3>
+<p>完全削除では、次の7つを削除します。</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>#</th><th>対象</th><th>保存先</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>睡眠の記録（未完了・中断のものを含む）</td><td>Convex <code>sleepRecords</code></td></tr>
+<tr><td>2</td><td>就寝時の6項目の回答</td><td>Convex <code>sleepFactors</code></td></tr>
+<tr><td>3</td><td>実験（実行中・終了済みを問わず）</td><td>Convex <code>experiments</code></td></tr>
+<tr><td>4</td><td>購読と無料体験の記録</td><td>Convex <code>subscriptions</code></td></tr>
+<tr><td>5</td><td>プロフィールと設定（氏名・メールアドレス・プロフィール画像を含む）</td><td>Convex <code>users</code></td></tr>
+<tr><td>6</td><td>サインインの情報（アカウント・セッション・更新トークン・認証の一時コード）</td><td>Convex の認証テーブル</td></tr>
+<tr><td>7</td><td><strong>PostHog 上のあなたのデータ</strong>（person と、それに紐づくイベント）</td><td>PostHog</td></tr>
+</tbody>
+</table>
+</div>
+<p>7 は、1〜6 の削除が終わってから実行します。外部サービスへの要求が失敗しても、 1〜6 の削除は取り消されません。失敗した場合は定期処理が再試行します。</p>
+<p><strong>ストアの購読は自動では解約されません。</strong> 削除の前に、 App Store / Google Play の登録管理から解約してください（§7.5）。</p>
+<h3>7.4 完全削除の後に残るもの</h3>
+<p><strong>「すべてが消えます」とは書けないため、正確に書きます。</strong></p>
+<p>完全削除の後、<strong>削除を実行したという記録だけ</strong>がサーバーに残ります（<code>deletionJobs</code>）。 残るのは次のものです。</p>
+<ul>
+<li>削除した<strong>件数</strong>（テーブルごとの行数）</li>
+<li>削除を予約した時刻・開始した時刻・終了した時刻</li>
+<li>PostHog への削除要求の<strong>結果</strong>（成功／失敗／未設定）とその実行時刻</li>
+<li>削除済みのユーザー ID の文字列と、PostHog に渡した識別子</li>
+</ul>
+<p><strong>ここには、睡眠の記録・6項目の回答・氏名・メールアドレス・プロフィール画像・ 課金の情報は1つも含まれていません。</strong> 残している理由は2つです。</p>
+<ol>
+<li>PostHog への削除要求が失敗したときに、<strong>再試行するための手がかり</strong>が必要であるため</li>
+<li>「いつ、何件消えたか」を確認できる先が、ユーザーの行ごと消えた後に無くなるため</li>
+</ol>
+<h3>7.5 解約について</h3>
+<p>購読の解約は App Store / Google Play の登録管理から行います。 アプリ内では完結しません。詳しくは利用規約をご覧ください。</p>
+<hr />
+<h2>8. 他社アプリ・サイトを跨いだトラッキングを行いません</h2>
+<ul>
+<li>本アプリは、<strong>他社のアプリやウェブサイトを跨いであなたを追跡しません。</strong></li>
+<li><strong>広告識別子（IDFA / AAID）を取得しません。</strong> そのため、iOS の App Tracking Transparency のダイアログを表示しません</li>
+<li><strong>位置情報・連絡先・端末の写真や動画・カメラ・検索履歴・閲覧履歴にアクセスしません。</strong> これらを取得するための仕組みをアプリに組み込んでいません</li>
+</ul>
+<hr />
+<h2>9. 通知について</h2>
+<p>本アプリの通知は、<strong>端末の中で予約されるローカル通知</strong>です。 サーバーからのプッシュ通知ではありません。 通知の予約に必要な時刻の計算は端末の中で行われ、 そのために追加の情報をサーバーへ送ることはありません。</p>
+<p>通知は端末の設定と、アプリの「設定」→「通知」から個別にオフにできます。</p>
+<hr />
+<h2>10. 未成年の方の利用</h2>
+<p>本アプリは、年齢帯として「14〜17歳」を選べます。つまり未成年の方の利用を想定しています。 <strong>未成年の方は、保護者の同意を得たうえでご利用ください。</strong> とくに有料プランのご購入は、保護者の同意が前提です。 詳しくは利用規約の該当条項をご覧ください。</p>
+<hr />
+<h2>11. あなたの権利</h2>
+<ul>
+<li><strong>閲覧</strong>: 保存されている記録は、すべてアプリの中で見ることができます</li>
+<li><strong>訂正</strong>: 記録の編集・削除、プロフィールと設定の変更は、アプリの中で行えます</li>
+<li><strong>削除</strong>: §7 のとおり、アカウントごと削除できます</li>
+<li><strong>計測の停止</strong>: §3.4 のとおり、いつでもオプトアウトできます</li>
+<li>そのほかのご要望は、§13 の窓口へご連絡ください</li>
+</ul>
+<hr />
+<h2>12. このポリシーの変更</h2>
+<p>内容を変更する場合は、本ページの版数と最終更新日を更新します。 重要な変更を行う場合は、アプリ内でお知らせします。</p>
+<hr />
+<h2>13. お問い合わせ</h2>
+<div class="table-wrap">
+<table>
+<thead><tr><th></th><th></th></tr></thead>
+<tbody>
+<tr><td>提供者</td><td>{{PROVIDER_NAME}}</td></tr>
+<tr><td>連絡先</td><td>{{CONTACT_EMAIL}}</td></tr>
+</tbody>
+</table>
+</div>
+<p>以上</p>
+<footer>睡眠ボタン</footer>
+</main>
+</body>
+</html>
